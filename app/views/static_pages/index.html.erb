@@ -1,4 +1,11 @@
 <h1>This is the homepage!</h1>
 <p>
   Sign up: <%= link_to 'click me', new_user_registration_path %><br />
+  <% if !current_user %>
+    Log in: <%= link_to 'click me', new_user_session_path %><br />
+  <% else %>
+    My dashboard: <%= link_to 'click me', teacher_path(current_user) %><br />
+    Sign out: <%= link_to 'click me', destroy_user_session_path, method: :delete %><br />
+  <% end %>
+
 </p>
