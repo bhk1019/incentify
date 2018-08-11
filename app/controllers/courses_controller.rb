@@ -12,6 +12,10 @@ class CoursesController < ApplicationController
     @course.save!
     redirect_to teacher_path(@teacher)
   end
+  
+  def show
+    @course = Course.find(params[:id])
+  end
 
   private
 
