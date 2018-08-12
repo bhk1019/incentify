@@ -1,4 +1,4 @@
 class Course < ApplicationRecord
   belongs_to :teacher
-  belongs_to :student, optional: true
+  has_many :students
 end
