@@ -1,10 +1,28 @@
 <br />
 
-<div class="booyah-box col-10 offset-1">
-  <h1><%= @course.title %></h1>
+
+
+<div class="booyah-box col-12">
+	<div class="row">
+		<div class="col-9 float-left">
+			<h1><%= @course.title %></h1>
+		</div>
+		<div class="col-3">
+			<%= link_to 'Add a new student...', new_course_enrolled_path(@course), class: 'btn btn-primary' %>
+		</div>	
+	</div>
+  
+	
   <br />
   <br />
-	  <% @course.students.each do |student| %>
-      <li><%= student.name %></li>
+	<div class="row">
+		<% @course.enrolleds.each do |student| %>
+			<div class="col-12 col-sm-2">
+				<div class="student text-center">
+					<%= student.firstname %>&nbsp<%= student.lastname %> <br />
+					<%= student.pointsearned %>
+				</div>
+			</div>
     <% end %>
+	</div>
 </div>

@@ -1,5 +1,8 @@
-<h1>This is the new course page</h1>
-<%= simple_form_for @course, url: teacher_courses_path do |f| %>
-  <%= f.input :title %>
-  <%= f.button :submit %>
-<% end %>
+<br />
+<div class="booyah-box col-11">
+  <h1>Create a new course</h1>
+  <%= simple_form_for @course, url: teacher_courses_path do |f| %>
+    <%= f.input :title %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

@@ -1,11 +1,14 @@
-<h1>This is the homepage!</h1>
-<p>
-  Sign up: <%= link_to 'click me', new_user_registration_path %><br />
-  <% if !current_user %>
-    Log in: <%= link_to 'click me', new_user_session_path %><br />
-  <% else %>
-    My dashboard: <%= link_to 'click me', teacher_path(current_user) %><br />
-    Sign out: <%= link_to 'click me', destroy_user_session_path, method: :delete %><br />
-  <% end %>
+<div class="hero">
+	<br />
+	<div class="frosty col-10 offset-1 text-center">
+		<br />
+		<h1>Motivate your students!</h1>
+		<br />
+		<h2>Use a classroom economy system to incentive classroom participation.</h2>
+		<br />
+		<%= link_to	'Demo Video', root_path, class: 'btn btn-success' %>
+		<br /><br />
+	</div>
+</div>
 
-</p>
+<br/>

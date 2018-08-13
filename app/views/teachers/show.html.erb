@@ -1,14 +1,15 @@
-<h1>This is the teacher dashboard</h1>
-<p>This dashboard is for: <%= @teacher.first_name %> </p>
-<% if current_user && current_user.id == @teacher.id %>
-  <p>You are logged in as this teacher.</p>
-  <p><%= link_to 'Create a new course', new_teacher_course_path(current_user) %></p>
-<% end %>
-<div class='courses'>
-  <ul>
-    <% @teacher.courses.each do |course| %>
-      <li><%= link_to course.title, teacher_course_path(course) %></li>
-    <% end %>
-  </ul>
+<br />
+<div class="booyah-box col-12">
+  <h1>Dashboard</h1>
+  <p>You are logged in as: <%= @teacher.first_name %>&nbsp<%= @teacher.last_name %> </p>
+  <% if current_user && current_user.id == @teacher.id %>
+    <p><%= link_to 'Create a new course', new_teacher_course_path(current_user) %></p>
+  <% end %>
+  <div class='courses'>
+    <ul>
+      <% @teacher.courses.each do |course| %>
+        <li><%= link_to course.title, course_path(course) %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-

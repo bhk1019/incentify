@@ -1,0 +1,12 @@
+<br />
+<div class="booyah-box col-11">
+  <h1>Add a new student</h1>
+	<%= simple_form_for @enrolled, url: course_enrolleds_path(@course) do |f| %>
+    <%= f.input :firstname, :label => "First Name" %>
+		<%= f.input :lastname, :label => "Last Name" %>
+    <br />
+    <%= f.submit "Add a student", class: 'btn btn-primary' %>
+    <br />
+    <br />
+  <% end %>
+</div>
