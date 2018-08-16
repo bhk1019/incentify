@@ -1,4 +1,6 @@
 class EnrolledsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def new
     @course = Course.find(params[:course_id])
     @enrolled = Enrolled.new
