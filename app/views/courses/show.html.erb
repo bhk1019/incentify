@@ -14,21 +14,14 @@
   <br />
 	<div class="row">
 		<% @course.enrolleds.each do |student| %>
-			<div class="row student col-12 col-sm-2">
+			<div class="row student col-12 col-sm-2" id="<%= student.id %>">
 				<%= student.firstname %>&nbsp<%= student.lastname %> <br />
 				Points: <%= student.pointsearned %><br />
 				<% if current_user && current_user.id == student.course.teacher.id %>
-					<%= link_to "add", '#' %><br />
-					<%= link_to 'sub', '#' %>
+					<%= link_to "add", teacher_course_enrolled_add_point_path(:enrolled_id => student.id, :teacher_id => student.course.teacher.id, :course_id => student.course.id), method: :patch %><br />
+					<%= link_to 'sub', teacher_course_enrolled_subtract_point_path(:enrolled_id => student.id, :teacher_id => student.course.teacher.id, :course_id => student.course.id), method: :patch %>
 				<% end %>
 			</div>
     <% end %>
   </div>
 </div>
-
-<script>
-	
-
-
-
-</script>

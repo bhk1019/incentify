@@ -12,6 +12,24 @@ class EnrolledsController < ApplicationController
     redirect_to course_path(@course)
   end
 
+  def add_point
+    @course = Course.find(params[:course_id])
+    @enrolled = @course.enrolleds.find_by_id(params[:enrolled_id])
+    @enrolled.pointsearned += 1
+    @enrolled.save
+    redirect_to course_path(@course)
+  end
+
+  def subtract_point
+    @course = Course.find(params[:course_id])
+    @enrolled = @course.enrolleds.find_by_id(params[:enrolled_id])
+    @enrolled.pointsearned -= 1
+    @enrolled.save
+    redirect_to course_path(@course)
+  end
+
+
+
   private
 
   def enrolled_params

@@ -4,8 +4,11 @@ Rails.application.routes.draw do
     resources :enrolleds
   end
   resources :teachers, only: [:show] do
-    resources :courses do
-      resources :enrolleds
+    resources :courses, only: [:new, :create, :show, :destroy] do
+      resources :enrolleds, only: [:new, :create, :destroy] do
+        patch 'add_point', to: 'enrolleds#add_point', as: 'add_point'
+        patch 'subtract_point', to: 'enrolleds#subtract_point', as: 'subtract_point'
+      end
     end
   end
   root "static_pages#index"
