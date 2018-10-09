@@ -4,8 +4,8 @@
 			<h1><%= @course.title %></h1>
 		</div>
 		<% if current_user && current_user.id == @course.teacher.id %>
-			<div class="col-3">
-				<%= link_to 'Add a new student...', new_course_enrolled_path(@course), class: 'btn btn-primary' %>
+			<div class="col-3 align-item-center">
+				<%= link_to 'Add student', new_course_enrolled_path(@course), class: 'btn btn-secondary btn-sm' %>
 			</div>
 		<% end %>
 	</div>
@@ -14,12 +14,19 @@
   <br />
 	<div class="row">
 		<% @course.enrolleds.each do |student| %>
-			<div class="row student col-12 col-sm-2" id="<%= student.id %>">
-				<%= student.firstname %>&nbsp<%= student.lastname %> <br />
-				Points: <%= student.pointsearned %><br />
+			<div class="row student col-11 col-md-5 col-lg-3" id="<%= student.id %>">
+				<div class="col-5 align-self-center">
+					<%= student.firstname %>&nbsp<%= student.lastname %>
+					
+				</div>
+				<div class="col-3 align-self-center">
+					<h1><%= student.pointsearned %></h1>
+				</div>
 				<% if current_user && current_user.id == student.course.teacher.id %>
-					<%= link_to "add", teacher_course_enrolled_add_point_path(:enrolled_id => student.id, :teacher_id => student.course.teacher.id, :course_id => student.course.id), method: :patch %><br />
-					<%= link_to 'sub', teacher_course_enrolled_subtract_point_path(:enrolled_id => student.id, :teacher_id => student.course.teacher.id, :course_id => student.course.id), method: :patch %>
+					<div class="col-4 text-center align-self-center">
+					<%= link_to "+", teacher_course_enrolled_add_point_path(:enrolled_id => student.id, :teacher_id => student.course.teacher.id, :course_id => student.course.id), method: :patch, class: "btn btn-primary btn-sm btn-points" %>
+					<%= link_to "-", teacher_course_enrolled_subtract_point_path(:enrolled_id => student.id, :teacher_id => student.course.teacher.id, :course_id => student.course.id), method: :patch, class: "btn btn-danger btn-sm btn-points" %>
+					</div>
 				<% end %>
 			</div>
     <% end %>
