@@ -1,11 +1,14 @@
 <div class="booyah-box col-12">
-	<div class="row">
-		<div class="col-9 float-left">
+	<div class="row align-items-center">
+		<div class="col-11 col-lg-5 text-center">
 			<h1><%= @course.title %></h1>
 		</div>
 		<% if current_user && current_user.id == @course.teacher.id %>
-			<div class="col-3 align-item-center">
-				<%= link_to 'Add student', new_course_enrolled_path(@course), class: 'btn btn-secondary btn-sm' %>
+			<div class="col-11 text-center col-lg-3">
+				<%= link_to 'Randomly select a student', '#', class: 'btn btn-info btn-block' %>
+			</div>
+			<div class="col-11 text-center col-lg-3">
+				<%= link_to 'Add a new student', new_course_enrolled_path(@course), class: 'btn btn-secondary btn-block' %>
 			</div>
 		<% end %>
 	</div>
@@ -17,7 +20,6 @@
 			<div class="row student col-11 col-md-5 col-lg-3" id="<%= student.id %>">
 				<div class="col-5 align-self-center">
 					<%= student.firstname %>&nbsp<%= student.lastname %>
-					
 				</div>
 				<div class="col-3 align-self-center">
 					<h1><%= student.pointsearned %></h1>
