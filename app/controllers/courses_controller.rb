@@ -17,6 +17,12 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
+  def randomly_select_student
+    @course = Course.find(params[:course_id])
+    @random_student = @course.enrolleds.sample(1)
+    render :json => @random_student
+  end
+
   private
 
   def course_params

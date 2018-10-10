@@ -29,7 +29,6 @@ class EnrolledsController < ApplicationController
   end
 
 
-
   private
 
   def enrolled_params

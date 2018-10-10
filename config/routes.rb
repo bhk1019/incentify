@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :courses do
+    get 'randomly_select_student', to: 'courses#randomly_select_student', as: 'randomize'
     resources :enrolleds
   end
   resources :teachers, only: [:show] do
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
       resources :enrolleds, only: [:new, :create, :destroy] do
         patch 'add_point', to: 'enrolleds#add_point', as: 'add_point'
         patch 'subtract_point', to: 'enrolleds#subtract_point', as: 'subtract_point'
+
       end
     end
   end
